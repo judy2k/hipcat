@@ -70,7 +70,7 @@ You must provide an 'access_token' in your configuration's 'hipchat' section.
 @click.command(help=__doc__)
 @click.version_option()
 @click.argument('room')
-@click.option('-m', '--message')
+@click.option('-m', '--message', help='A message to post. Uses STDIN if not provided.')
 def main(room, message):
     try:
         config = Config().load()
