@@ -18,7 +18,7 @@ Create a file at `~/.hipcat.ini` that looks a bit like this:
 
 ```ini
 [hipcat]
-access_key = <put-your-token here>
+access_token = <put-your-token here>
 ```
 
 ## Using hipcat
