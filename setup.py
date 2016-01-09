@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='hipcat',
-    version='0.0.2',
+    version='0.0.3',
     description='Pipe text to HipChat',
     author='Mark Smith',
     author_email='judy@judy.co.uk',
