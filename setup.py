@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='hipcat',
@@ -13,14 +13,17 @@ setup(
         "Development Status :: 3 - Alpha",
         "Environment :: Console",
         "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
+        'Operating System :: OS Independent',
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.3",
         "Programming Language :: Python :: 3.4",
         "Programming Language :: Python :: 3.5",
         "Topic :: Communications :: Chat",
     ],
+    platforms='any',
 
-    packages=['hipcat'],
+    packages=find_packages(),
+    zip_safe=False,
     install_requires=[
         "click>=4.0",
         "requests",
@@ -30,4 +33,3 @@ setup(
         hipcat=hipcat.cli:main
     ''',
 )
-
