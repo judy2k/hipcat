@@ -27,7 +27,7 @@ pre-release: README.rst
 
 release:
 	@if git diff --quiet && git diff --quiet --cached; then\
-		python setup.py sdist bdist_wheel release;\
+		python setup.py sdist bdist_wheel upload;\
 	else\
 		echo 'COMMIT YOUR CHANGES BEFORE RELEASING'; exit 1;\
 	fi
