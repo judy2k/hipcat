@@ -3,6 +3,7 @@ RELEASE CHECKLIST:
 * Update documentation (then run pre-release again)
 * Commit changes
 * Update version number
+* Push, WITH TAGS
 * make release
 endef
 export RELEASE_CHECKLIST
