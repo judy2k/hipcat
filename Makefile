@@ -18,12 +18,14 @@ clean:
 install:
 	pip install -r requirements.txt
 
-pre-release:
+README.rst: README.md
 	pandoc --from=markdown --to=rst --output=README.rst README.md
+
+pre-release: README.rst
 	@echo "$$RELEASE_CHECKLIST"
 
 release:
-	@if git diff --quiet --cached; then\
+	@if git diff --quiet && git diff --quiet --cached; then\
 		python setup.py sdist bdist_wheel;\
 	else\
 		echo 'COMMIT YOUR CHANGES BEFORE RELEASING'; exit 1;\
