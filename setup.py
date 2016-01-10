@@ -9,7 +9,8 @@ setup(
     author='Mark Smith',
     author_email='judy@judy.co.uk',
     url='https://www.github.com/judy2k/hipcat/',
-    classifiers = [
+    license="GNU General Public License v2 (GPLv2)",
+    classifiers=[
         "Development Status :: 3 - Alpha",
         "Environment :: Console",
         "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
