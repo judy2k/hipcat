@@ -1,11 +1,21 @@
 #!/usr/bin/env python
 
 from setuptools import setup, find_packages
+import sys
+
+
+long_description = "Pipe text to HipChat"
+try:
+    long_description = open("README.rst").read()
+except Exception as e:
+    print(e, file=sys.stderr)
+
 
 setup(
     name='hipcat',
     version='0.0.8',
     description='Pipe text to HipChat',
+    long_description=long_description,
     author='Mark Smith',
     author_email='judy@judy.co.uk',
     url='https://www.github.com/judy2k/hipcat/',
