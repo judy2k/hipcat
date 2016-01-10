@@ -17,7 +17,7 @@ on Linux or OSX) and
 
     pip install hipcat
 
-Go to https://fanduel.hipchat.com/account/api and create a new token. It
+Go to https://www.hipchat.com/account/api and create a new token. It
 only needs the 'Send Notification' scope, but this may change in future.
 
 Create a file at ``~/.hipcat.ini`` that looks a bit like this:
