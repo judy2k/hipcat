@@ -23,9 +23,13 @@ pre-release:
 	@echo "$$RELEASE_CHECKLIST"
 
 release:
-	python setup.py sdist bdist_wheel
+	@if git diff --quiet --cached; then\
+		python setup.py sdist bdist_wheel;\
+	else\
+		echo 'COMMIT YOUR CHANGES BEFORE RELEASING'; exit 1;\
+	fi
 
 test:
 	tox -r
 
-.PHONY: install pre-release release test
+.PHONY: all install pre-release release test
