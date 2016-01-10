@@ -47,7 +47,7 @@ my-long-task && hipcat 'Notifications' -m "The long-running task is done"
 
 ## Contributing to hipcat
 
-You want to contribute?? Love you!
+You want to contribute? Love you!
 
 There's some stuff you should know:
 
