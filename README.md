@@ -12,7 +12,7 @@ You will need a working installation of [Python 3](https://www.python.org/)
 [PIP](https://pip.pypa.io/en/stable/installing/).
 
 ```bash
-pip install hipcat
+pip3 install hipcat
 ```
 
 Go to [https://www.hipchat.com/account/api](https://www.hipchat.com/account/api)

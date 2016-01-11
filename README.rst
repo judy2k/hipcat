@@ -15,7 +15,7 @@ on Linux or OSX) and
 
 .. code:: bash
 
-    pip install hipcat
+    pip3 install hipcat
 
 Go to https://www.hipchat.com/account/api and create a new token. It
 only needs the 'Send Message' scope, but this may change in future.
