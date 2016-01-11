@@ -22,7 +22,7 @@ may change in future.
 Create a file at `~/.hipcat.ini` that looks a bit like this:
 
 ```ini
-[hipcat]
+[hipchat]
 access_token = <put-your-token here>
 ```
 

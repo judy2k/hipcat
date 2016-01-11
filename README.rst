@@ -24,7 +24,7 @@ Create a file at ``~/.hipcat.ini`` that looks a bit like this:
 
 .. code:: ini
 
-    [hipcat]
+    [hipchat]
     access_token = <put-your-token here>
 
 Using hipcat
