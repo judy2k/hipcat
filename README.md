@@ -64,4 +64,6 @@ There's some stuff you should know:
 * Add `--quote` option for pre-pending the message with `/quote`
 * Add a `--code` option for pre-pending the message with `/code`
 * Add a flag to send the output to HipChat line-by-line rather than at the end.
+* Allow message posting to individuals as well as rooms.
+* Allow uploading content as a file rather than inline text.
 * Err... post a GitHub issue if you want to see a new feature, and we'll talk!
