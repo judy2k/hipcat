@@ -71,8 +71,8 @@ You must provide an 'access_token' in your configuration's 'hipchat' section.
 @click.version_option()
 @click.argument('room')
 @click.option('-m', '--message', help='A message to post. Uses STDIN if not provided.')
-@click.option('-q', '--quote', help='Prefix the message with /quote for formatting.')
-@click.option('-c', '--code', help='Prefix the message with /code for formatting.')
+@click.option('-q', '--quote', help='Prefix the message with /quote for formatting.', is_flag=True)
+@click.option('-c', '--code', help='Prefix the message with /code for formatting.', is_flag=True)
 def main(room, message, quote, code):
     try:
         config = Config().load()
