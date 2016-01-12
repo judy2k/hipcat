@@ -46,6 +46,10 @@ provide it as a parameter:
     # Run a long running command and then notify on HipChat
     my-long-task && hipcat 'Notifications' -m "The long-running task is done"
 
+If the text you are sending to HipChat is formatted, use the ``-q`` flag
+to prefix with ``/quote``, and if it should be syntax-highlighted code,
+use the ``-c`` flag to prefix with ``/code``.
+
 Contributing to hipcat
 ----------------------
 
@@ -63,8 +67,6 @@ There's some stuff you should know:
 To Do
 -----
 
--  Add ``--quote`` option for pre-pending the message with ``/quote``
--  Add a ``--code`` option for pre-pending the message with ``/code``
 -  Add a flag to send the output to HipChat line-by-line rather than at
    the end.
 -  Allow message posting to individuals as well as rooms.
