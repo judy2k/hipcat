@@ -74,18 +74,19 @@ You must provide an 'access_token' in your configuration's 'hipchat' section.
 @click.option('-m', '--message', help='A message to post. Uses STDIN if not provided.')
 @click.option('-q', '--quote', help='Prefix the message with /quote for formatting.', is_flag=True)
 @click.option('-c', '--code', help='Prefix the message with /code for formatting.', is_flag=True)
-@click.option('-s', '--sender', help='A label to be shown in addition to the sender\'s name (required if using --notify).')
+@click.option('-s', '--sender', help='A label to be shown in addition to the sender\'s name.')
 @click.option('--color', help='Background color for message. Valid values: yellow, green, red, purple, gray, random.')
 @click.option('-n', '--notify', help='Whether this message should trigger a user notification.', is_flag=True)
 def main(room, notification, message, quote, code, sender, color, notify):
     try:
         config = Config().load()
 
-        url = '{config.base_url}/v2/room/{room_id_or_name}/' + ('notification' if notification else 'message')
-        url = url.format(
+        url = '{config.base_url}/v2/room/{room_id_or_name}/{endpoint}'.format(
             config=config,
             room_id_or_name=room,
+            endpoint='notification' if notification else 'message'
         )
+
         message = message or sys.stdin.read()
         if message:
             if quote or code:
@@ -94,6 +95,15 @@ def main(room, notification, message, quote, code, sender, color, notify):
                     message=message
                 )
 
+            if color and color not in ('yellow', 'green', 'red', 'purple', 'gray', 'random'):
+                print(
+                    'Invalid value {color} for color. Valid values are: yellow, green, red, purple, gray, random.'.format(
+                        color=color
+                    ),
+                    file=sys.stderr
+                )
+                exit(1)
+
             response = requests.post(
                 url,
                 headers={
@@ -101,14 +111,13 @@ def main(room, notification, message, quote, code, sender, color, notify):
                     'Content-Type': 'application/json',
                 },
                 data=json.dumps({
-                    'room_id': room,
                     'message': message,
                     'notify': notify,
-                    'from': sender,
+                    'from': sender or 'hipcat' if notify else '',
                     'color': color or 'yellow'
                 }),
             )
-            if not notification:
+            if response.status_code > 299:
                 response = response.json()
                 if 'error' in response:
                     print(response['error']['message'], file=sys.stderr)
