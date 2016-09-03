@@ -70,14 +70,19 @@ You must provide an 'access_token' in your configuration's 'hipchat' section.
 @click.command(help=__doc__)
 @click.version_option()
 @click.argument('room')
+@click.option('--notification', help='Whether the message should be sent as a notification instead.', is_flag=True)
 @click.option('-m', '--message', help='A message to post. Uses STDIN if not provided.')
 @click.option('-q', '--quote', help='Prefix the message with /quote for formatting.', is_flag=True)
 @click.option('-c', '--code', help='Prefix the message with /code for formatting.', is_flag=True)
-def main(room, message, quote, code):
+@click.option('-s', '--sender', help='A label to be shown in addition to the sender\'s name (required if using --notify).')
+@click.option('--color', help='Background color for message. Valid values: yellow, green, red, purple, gray, random.')
+@click.option('-n', '--notify', help='Whether this message should trigger a user notification.', is_flag=True)
+def main(room, notification, message, quote, code, sender, color, notify):
     try:
         config = Config().load()
 
-        url = '{config.base_url}/v2/room/{room_id_or_name}/message'.format(
+        url = '{config.base_url}/v2/room/{room_id_or_name}/' + ('notification' if notification else 'message')
+        url = url.format(
             config=config,
             room_id_or_name=room,
         )
@@ -88,6 +93,7 @@ def main(room, message, quote, code):
                     formatter='/quote' if quote else '/code',
                     message=message
                 )
+
             response = requests.post(
                 url,
                 headers={
@@ -95,12 +101,18 @@ def main(room, message, quote, code):
                     'Content-Type': 'application/json',
                 },
                 data=json.dumps({
-                    'message': message
+                    'room_id': room,
+                    'message': message,
+                    'notify': notify,
+                    'from': sender,
+                    'color': color or 'yellow'
                 }),
-            ).json()
-            if 'error' in response:
-                print(response['error']['message'], file=sys.stderr)
-                exit(1)
+            )
+            if not notification:
+                response = response.json()
+                if 'error' in response:
+                    print(response['error']['message'], file=sys.stderr)
+                    exit(1)
     except KeyboardInterrupt:
         exit(1)
     except UserError as user_error:
