@@ -50,22 +50,27 @@ If the text you are sending to HipChat is formatted, use the ``-q`` flag
 to prefix with ``/quote``, and if it should be syntax-highlighted code,
 use the ``-c`` flag to prefix with ``/code``.
 
-The message you are sending may also be treated as a
-[room notification](https://www.hipchat.com/docs/apiv2/method/send_room_notification)
-via the ``--notification`` flag. The following additional options and flags
-are then recognized by **hipcat**:
+Notifications
+-------------
 
-- ``--color`` to specify background color for the message. Valid values:
-yellow, green, red, purple, gray, random. Defaults to *yellow*.
-- ``--sender`` to specify a label to be shown in addition to the sender's name.
-Defaults to *hipcat* if ``--notify`` (see below) is specified as well.
-- ``--notify`` to ensure this message triggers a user notification.
+The message you are sending may also be treated as a `room
+notification <https://www.hipchat.com/docs/apiv2/method/send_room_notification>`__
+via the ``--notification`` flag. The following additional options and
+flags are then recognized by hipcat:
+
+-  ``--color`` to specify background color for the message. Valid
+   values: yellow, green, red, purple, gray, random. Defaults to
+   *yellow*.
+-  ``--sender`` to specify a label to be shown in addition to the
+   sender's name. Defaults to *hipcat* if ``--notify`` (see below) is
+   specified as well.
+-  ``--notify`` to ensure this message triggers a user notification.
 
 .. code:: bash
 
-    # Send a message "Message" with a purple background, from "BOT" and with a user notification.
+    # Send a message "Message" with a purple background, from "BOT" and with a
+    # user notification:
     hipcat 'Notifications' --notification --notify -m "Message" --color=purple --sender="BOT"
-
 
 Contributing to hipcat
 ----------------------
