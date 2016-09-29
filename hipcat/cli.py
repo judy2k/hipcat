@@ -81,11 +81,13 @@ def main(room, notification, message, quote, code, sender, color, notify):
     try:
         config = Config().load()
 
-        url = '{config.base_url}/v2/room/{room_id_or_name}/{endpoint}'.format(
+        url = '{config.base_url}/v2/{user_or_room}/{room_id_or_name}/{endpoint}'.format(
             config=config,
             room_id_or_name=room,
-            endpoint='notification' if notification else 'message'
+            endpoint='notification' if notification else 'message',
+            user_or_room='user' if room.startswith('@') else 'room'
         )
+        print(url)
 
         message = message or sys.stdin.read()
         if message:

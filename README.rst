@@ -50,6 +50,11 @@ If the text you are sending to HipChat is formatted, use the ``-q`` flag
 to prefix with ``/quote``, and if it should be syntax-highlighted code,
 use the ``-c`` flag to prefix with ``/code``.
 
+You can send a direct message by using the 'mention name' of a user
+instead of a room name:
+
+\`\`\`bash echo "You are great" \| hipcat '@FriendlyDave'
+
 Notifications
 -------------
 
