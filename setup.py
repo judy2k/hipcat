@@ -13,7 +13,7 @@ except Exception as e:
 
 setup(
     name='hipcat',
-    version='0.0.11',
+    version='0.1.0',
     description='Pipe text to HipChat',
     long_description=long_description,
     author='Mark Smith',
