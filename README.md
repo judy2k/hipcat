@@ -53,6 +53,7 @@ a room name:
 
 ```bash
 echo "You are great" | hipcat '@FriendlyDave'
+```
 
 ## Notifications
 

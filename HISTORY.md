@@ -1,5 +1,8 @@
 # Hipcat Releases
 
+## Release v0.1.1
+- Fix the README.
+
 ## Release v0.1.0
 - Add the ability to send direct messages.
 
