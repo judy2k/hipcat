@@ -93,6 +93,5 @@ There's some stuff you should know:
 ## To Do
 
 * Add a flag to send the output to HipChat line-by-line rather than at the end.
-* Allow message posting to individuals as well as rooms.
 * Allow uploading content as a file rather than inline text.
 * Err... post a GitHub issue if you want to see a new feature, and we'll talk!
